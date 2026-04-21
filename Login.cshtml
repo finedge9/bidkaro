@@ -1,0 +1,46 @@
+<!-- ===== LOGIN PAGE ===== -->
+@* Views/Account/Login.cshtml *@
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="auth-section">
+    <div class="auth-split">
+        <div class="auth-left">
+            <div class="auth-brand"><span class="brand-bid">BID</span><span class="brand-karo">KARO</span></div>
+            <h2>Welcome Back!</h2>
+            <p>Log in to access live auctions, track your bids and manage your account.</p>
+            <ul class="auth-perks">
+                <li><i class="fa fa-check-circle"></i> Real-time bidding on 1,400+ vehicles</li>
+                <li><i class="fa fa-check-circle"></i> Verified inventory from banks & NBFCs</li>
+                <li><i class="fa fa-check-circle"></i> Instant bid notifications</li>
+                <li><i class="fa fa-check-circle"></i> Transparent, fair auction process</li>
+            </ul>
+        </div>
+        <div class="auth-right">
+            <div class="auth-card">
+                <h3>Sign In</h3>
+                <div class="form-group">
+                    <label>Mobile Number / Email</label>
+                    <input type="text" class="form-control" placeholder="+91 98765 43210" />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="password-wrap">
+                        <input type="password" class="form-control" placeholder="Enter password" id="loginPass" />
+                        <button class="toggle-pass" onclick="togglePass('loginPass')"><i class="fa fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="form-row-flex">
+                    <label class="checkbox-label"><input type="checkbox" /> Remember me</label>
+                    <a href="/Account/ForgotPassword" class="forgot-link">Forgot Password?</a>
+                </div>
+                <button class="btn-auth">Sign In</button>
+                <div class="auth-divider"><span>OR</span></div>
+                <button class="btn-social google"><i class="fab fa-google"></i> Continue with Google</button>
+                <p class="auth-switch">Don't have an account? <a href="/Account/Register">Register Free</a></p>
+            </div>
+        </div>
+    </div>
+</section>

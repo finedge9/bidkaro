@@ -1,0 +1,240 @@
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+    <div class="hero-bg">
+        <div class="hero-overlay"></div>
+    </div>
+    <div class="container hero-content">
+        <div class="hero-badge"><i class="fa fa-circle pulse-dot"></i> Live Auctions Running</div>
+        <h1>India's #1 Vehicle<br><span class="hero-accent">Auction Platform</span></h1>
+        <p>Buy & sell pre-owned 2-wheelers, 4-wheelers, commercial vehicles and farm equipment through transparent real-time bidding.</p>
+
+        <!-- Search Bar -->
+        <div class="hero-search">
+            <select name="category">
+                <option value="">All Vehicles</option>
+                <option>2 Wheelers</option>
+                <option>3 Wheelers</option>
+                <option>4 Wheelers</option>
+                <option>Commercial</option>
+                <option>Construction</option>
+                <option>Farm Equipment</option>
+            </select>
+            <select name="city">
+                <option value="">Select City</option>
+                <option>Delhi</option>
+                <option>Mumbai</option>
+                <option>Bangalore</option>
+                <option>Hyderabad</option>
+                <option>Chennai</option>
+                <option>Kolkata</option>
+                <option>Gurgaon</option>
+                <option>Noida</option>
+            </select>
+            <input type="text" placeholder="Search make, model, year..." />
+            <button class="btn-search"><i class="fa fa-search"></i> Search</button>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat"><span class="stat-num">15,000+</span><span class="stat-label">Vehicles Sold</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">8,500+</span><span class="stat-label">Registered Buyers</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Live Auctions</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Cities Covered</span></div>
+        </div>
+    </div>
+    <div class="hero-scroll-hint"><i class="fa fa-chevron-down"></i></div>
+</section>
+
+<!-- ===== CATEGORY TILES ===== -->
+<section class="categories section-pad">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Browse by Type</span>
+            <h2>Find Your Vehicle</h2>
+        </div>
+        <div class="cat-grid">
+            <a href="/Auction/Category/two-wheeler" class="cat-card cat-orange">
+                <i class="fa fa-motorcycle cat-icon"></i>
+                <span>2 Wheelers</span>
+                <small>342 Lots</small>
+            </a>
+            <a href="/Auction/Category/three-wheeler" class="cat-card cat-blue">
+                <i class="fa fa-truck-pickup cat-icon"></i>
+                <span>3 Wheelers</span>
+                <small>89 Lots</small>
+            </a>
+            <a href="/Auction/Category/four-wheeler" class="cat-card cat-green">
+                <i class="fa fa-car cat-icon"></i>
+                <span>4 Wheelers</span>
+                <small>718 Lots</small>
+            </a>
+            <a href="/Auction/Category/commercial" class="cat-card cat-red">
+                <i class="fa fa-truck cat-icon"></i>
+                <span>Commercial</span>
+                <small>155 Lots</small>
+            </a>
+            <a href="/Auction/Category/construction" class="cat-card cat-yellow">
+                <i class="fa fa-hard-hat cat-icon"></i>
+                <span>Construction</span>
+                <small>67 Lots</small>
+            </a>
+            <a href="/Auction/Category/farm" class="cat-card cat-teal">
+                <i class="fa fa-tractor cat-icon"></i>
+                <span>Farm Equipment</span>
+                <small>43 Lots</small>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== LIVE AUCTIONS ===== -->
+<section class="live-auctions section-pad bg-light">
+    <div class="container">
+        <div class="section-header flex-between">
+            <div>
+                <span class="section-eyebrow"><i class="fa fa-circle live-dot"></i> Live Right Now</span>
+                <h2>Active Auctions</h2>
+            </div>
+            <a href="/Auction/Live" class="btn-outline">View All <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="auction-grid">
+            @for (int i = 0; i < 6; i++) {
+                var vehicles = new[] { "2019 Honda Activa 5G", "2020 Maruti Swift VXI", "2018 Bajaj Pulsar NS200", "2021 Mahindra Bolero", "2017 Tata Ace Gold", "2019 Hero Splendor+" };
+                var cities = new[] { "Delhi", "Mumbai", "Gurgaon", "Noida", "Bangalore", "Chennai" };
+                var prices = new[] { "₹32,500", "₹4,85,000", "₹68,000", "₹7,20,000", "₹3,10,000", "₹45,000" };
+                var times = new[] { "02:14:33", "00:45:12", "01:30:55", "03:12:08", "00:12:44", "04:55:21" };
+                var bids = new[] { 12, 34, 8, 21, 15, 7 };
+                var sources = new[] { "Bank Repo", "NBFC", "Consumer", "Insurance", "Leasing", "Consumer" };
+                <div class="auction-card">
+                    <div class="auction-img-wrap">
+                        <div class="auction-img placeholder-img">
+                            <i class="fa fa-car fa-3x"></i>
+                        </div>
+                        <span class="badge-live">LIVE</span>
+                        <span class="badge-source">@sources[i]</span>
+                    </div>
+                    <div class="auction-body">
+                        <h3>@vehicles[i]</h3>
+                        <div class="auction-meta">
+                            <span><i class="fa fa-map-marker-alt"></i> @cities[i]</span>
+                            <span><i class="fa fa-gavel"></i> @bids[i] Bids</span>
+                        </div>
+                        <div class="auction-price-row">
+                            <div>
+                                <div class="price-label">Current Bid</div>
+                                <div class="price-value">@prices[i]</div>
+                            </div>
+                            <div class="timer-wrap">
+                                <div class="price-label">Ends In</div>
+                                <div class="timer" data-time="@times[i]">@times[i]</div>
+                            </div>
+                        </div>
+                        <a href="/Auction/Detail/@(i+1)" class="btn-bid-card">Place Bid <i class="fa fa-gavel"></i></a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="how-it-works section-pad">
+    <div class="container">
+        <div class="section-header center">
+            <span class="section-eyebrow">Simple Process</span>
+            <h2>How BidKaro Works</h2>
+            <p>Get started in 3 easy steps and bid with confidence</p>
+        </div>
+        <div class="steps-row">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <div class="step-icon"><i class="fa fa-user-plus"></i></div>
+                <h3>Register</h3>
+                <p>Create your free account and complete KYC verification to unlock all auction features.</p>
+            </div>
+            <div class="step-arrow"><i class="fa fa-long-arrow-alt-right"></i></div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <div class="step-icon"><i class="fa fa-search"></i></div>
+                <h3>Browse & Inspect</h3>
+                <p>Explore thousands of listed vehicles with detailed photos, inspection reports, and history.</p>
+            </div>
+            <div class="step-arrow"><i class="fa fa-long-arrow-alt-right"></i></div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <div class="step-icon"><i class="fa fa-gavel"></i></div>
+                <h3>Bid & Win</h3>
+                <p>Place real-time bids and win your desired vehicle. Get instant notifications on your status.</p>
+            </div>
+        </div>
+        <div class="hiw-cta">
+            <a href="/Account/Register" class="btn-primary-lg">Start Bidding Free <i class="fa fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TRUST SOURCES ===== -->
+<section class="sources section-pad bg-dark">
+    <div class="container">
+        <div class="section-header center light">
+            <span class="section-eyebrow">Trusted Inventory</span>
+            <h2>Vehicle Sources We Partner With</h2>
+        </div>
+        <div class="sources-grid">
+            <div class="source-card"><i class="fa fa-university"></i><span>Banks</span></div>
+            <div class="source-card"><i class="fa fa-building"></i><span>NBFCs</span></div>
+            <div class="source-card"><i class="fa fa-car"></i><span>Consumers</span></div>
+            <div class="source-card"><i class="fa fa-file-contract"></i><span>Leasing Cos.</span></div>
+            <div class="source-card"><i class="fa fa-shield-alt"></i><span>Insurance Cos.</span></div>
+            <div class="source-card"><i class="fa fa-industry"></i><span>Corporates</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials section-pad">
+    <div class="container">
+        <div class="section-header center">
+            <span class="section-eyebrow">What Buyers Say</span>
+            <h2>Trusted by Thousands</h2>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                <p>"Got a great deal on a repossessed Swift. The process was completely transparent and smooth. Highly recommend BidKaro!"</p>
+                <div class="testi-author"><div class="avatar">RS</div><div><b>Rahul Sharma</b><small>Delhi</small></div></div>
+            </div>
+            <div class="testi-card featured">
+                <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                <p>"BidKaro helped me find a commercial vehicle at 40% below market price. Real-time bidding is exciting and fair!"</p>
+                <div class="testi-author"><div class="avatar">PK</div><div><b>Pradeep Kumar</b><small>Gurgaon</small></div></div>
+            </div>
+            <div class="testi-card">
+                <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i></div>
+                <p>"The inspection reports are detailed and accurate. I've purchased 3 bikes through BidKaro now. Excellent platform!"</p>
+                <div class="testi-author"><div class="avatar">AM</div><div><b>Anjali Mehta</b><small>Noida</small></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-banner">
+    <div class="container cta-inner">
+        <div>
+            <h2>Ready to Bid on Your Next Vehicle?</h2>
+            <p>Join 8,500+ registered buyers. Register free and start bidding today!</p>
+        </div>
+        <div class="cta-btns">
+            <a href="/Account/Register" class="btn-primary-lg">Register Now</a>
+            <a href="/Auction/Live" class="btn-outline-light">View Live Auctions</a>
+        </div>
+    </div>
+</section>

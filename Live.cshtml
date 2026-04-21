@@ -1,0 +1,160 @@
+@{
+    ViewBag.Title = "Live Auctions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-hero small-hero">
+    <div class="container">
+        <h1><i class="fa fa-gavel"></i> Live Auctions</h1>
+        <p>Real-time bidding on pre-owned vehicles from Banks, NBFCs & more</p>
+    </div>
+</div>
+
+<section class="auction-listing section-pad">
+    <div class="container auction-layout">
+
+        <!-- Sidebar Filters -->
+        <aside class="filter-sidebar">
+            <div class="filter-header">
+                <h3><i class="fa fa-sliders-h"></i> Filters</h3>
+                <a href="#" class="clear-filters">Clear All</a>
+            </div>
+
+            <div class="filter-group">
+                <h4>Vehicle Type</h4>
+                <label><input type="checkbox" checked /> 2 Wheelers <span class="count">(342)</span></label>
+                <label><input type="checkbox" /> 3 Wheelers <span class="count">(89)</span></label>
+                <label><input type="checkbox" checked /> 4 Wheelers <span class="count">(718)</span></label>
+                <label><input type="checkbox" /> Commercial <span class="count">(155)</span></label>
+                <label><input type="checkbox" /> Construction <span class="count">(67)</span></label>
+                <label><input type="checkbox" /> Farm Equipment <span class="count">(43)</span></label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Auction Status</h4>
+                <label><input type="radio" name="status" checked /> Live Now</label>
+                <label><input type="radio" name="status" /> Upcoming</label>
+                <label><input type="radio" name="status" /> Closed</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Source</h4>
+                <label><input type="checkbox" /> Bank Repossession</label>
+                <label><input type="checkbox" /> NBFC</label>
+                <label><input type="checkbox" /> Consumer</label>
+                <label><input type="checkbox" /> Insurance</label>
+                <label><input type="checkbox" /> Leasing</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>City</h4>
+                <select class="filter-select">
+                    <option>All Cities</option>
+                    <option>Delhi NCR</option>
+                    <option>Mumbai</option>
+                    <option>Bangalore</option>
+                    <option>Hyderabad</option>
+                    <option>Chennai</option>
+                    <option>Kolkata</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <div class="price-range">
+                    <input type="range" min="0" max="2000000" value="1000000" id="priceRange" />
+                    <div class="range-labels">
+                        <span>₹0</span><span id="priceVal">₹10,00,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Year</h4>
+                <div class="year-range">
+                    <input type="number" placeholder="From" min="2000" max="2024" value="2015" />
+                    <span>–</span>
+                    <input type="number" placeholder="To" min="2000" max="2024" value="2024" />
+                </div>
+            </div>
+
+            <button class="btn-apply-filter">Apply Filters</button>
+        </aside>
+
+        <!-- Auction Results -->
+        <div class="auction-results">
+            <div class="results-header">
+                <span class="results-count"><strong>1,414</strong> auctions found</span>
+                <div class="results-controls">
+                    <select class="sort-select">
+                        <option>Sort: Ending Soon</option>
+                        <option>Sort: Newest First</option>
+                        <option>Sort: Price: Low to High</option>
+                        <option>Sort: Price: High to Low</option>
+                        <option>Sort: Most Bids</option>
+                    </select>
+                    <button class="view-toggle active" id="gridView"><i class="fa fa-th"></i></button>
+                    <button class="view-toggle" id="listView"><i class="fa fa-list"></i></button>
+                </div>
+            </div>
+
+            <!-- Auction Cards Grid -->
+            <div class="auction-grid" id="auctionGrid">
+                @{
+                    var auctionData = new[] {
+                        new { Name="2019 Honda Activa 5G", City="Delhi", Bids=12, Price="₹32,500", Time="02:14:33", Source="Bank Repo", KM="22,000 km", Year="2019" },
+                        new { Name="2020 Maruti Swift VXI", City="Mumbai", Bids=34, Price="₹4,85,000", Time="00:45:12", Source="NBFC", KM="38,500 km", Year="2020" },
+                        new { Name="2018 Bajaj Pulsar NS200", City="Gurgaon", Bids=8, Price="₹68,000", Time="01:30:55", Source="Consumer", KM="55,000 km", Year="2018" },
+                        new { Name="2021 Mahindra Bolero", City="Noida", Bids=21, Price="₹7,20,000", Time="03:12:08", Source="Insurance", KM="41,200 km", Year="2021" },
+                        new { Name="2017 Tata Ace Gold", City="Bangalore", Bids=15, Price="₹3,10,000", Time="00:12:44", Source="Leasing", KM="78,000 km", Year="2017" },
+                        new { Name="2019 Hero Splendor+", City="Chennai", Bids=7, Price="₹45,000", Time="04:55:21", Source="Consumer", KM="31,000 km", Year="2019" },
+                        new { Name="2022 Hyundai Creta SX", City="Hyderabad", Bids=48, Price="₹12,50,000", Time="01:05:00", Source="Bank Repo", KM="18,000 km", Year="2022" },
+                        new { Name="2016 Eicher 10.90", City="Delhi", Bids=6, Price="₹5,85,000", Time="02:40:15", Source="NBFC", KM="1,20,000 km", Year="2016" },
+                        new { Name="2020 TVS Apache RTR", City="Kolkata", Bids=19, Price="₹72,000", Time="00:55:30", Source="Insurance", KM="28,000 km", Year="2020" },
+                    };
+                }
+                @foreach (var a in auctionData) {
+                    <div class="auction-card">
+                        <div class="auction-img-wrap">
+                            <div class="auction-img placeholder-img"><i class="fa fa-car fa-3x"></i></div>
+                            <span class="badge-live">LIVE</span>
+                            <span class="badge-source">@a.Source</span>
+                        </div>
+                        <div class="auction-body">
+                            <h3>@a.Name</h3>
+                            <div class="auction-meta">
+                                <span><i class="fa fa-map-marker-alt"></i> @a.City</span>
+                                <span><i class="fa fa-tachometer-alt"></i> @a.KM</span>
+                                <span><i class="fa fa-gavel"></i> @a.Bids Bids</span>
+                            </div>
+                            <div class="auction-price-row">
+                                <div>
+                                    <div class="price-label">Current Bid</div>
+                                    <div class="price-value">@a.Price</div>
+                                </div>
+                                <div class="timer-wrap">
+                                    <div class="price-label">Ends In</div>
+                                    <div class="timer" data-time="@a.Time">@a.Time</div>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <a href="/Auction/Detail/1" class="btn-bid-card">Place Bid</a>
+                                <button class="btn-watchlist"><i class="fa fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pg-btn active">1</button>
+                <button class="pg-btn">2</button>
+                <button class="pg-btn">3</button>
+                <span>...</span>
+                <button class="pg-btn">24</button>
+                <button class="pg-btn pg-next">Next <i class="fa fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>

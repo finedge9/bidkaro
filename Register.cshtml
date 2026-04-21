@@ -1,0 +1,72 @@
+<!-- Views/Account/Register.cshtml -->
+@model BidKaro.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register - BidKaro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="auth-section">
+    <div class="auth-split">
+        <div class="auth-left">
+            <div class="auth-brand"><span class="brand-bid">BID</span><span class="brand-karo">KARO</span></div>
+            <h2>Join BidKaro Free!</h2>
+            <p>Create your account in 2 minutes and start bidding on thousands of vehicles from banks, NBFCs & more.</p>
+            <ul class="auth-perks">
+                <li><i class="fa fa-check-circle"></i> Free registration, no hidden fees</li>
+                <li><i class="fa fa-check-circle"></i> Bid from anywhere, anytime</li>
+                <li><i class="fa fa-check-circle"></i> Secure payments via escrow</li>
+                <li><i class="fa fa-check-circle"></i> 50+ cities, 1400+ live lots</li>
+            </ul>
+        </div>
+        <div class="auth-right">
+            <div class="auth-card">
+                <h3>Create Account</h3>
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post)) {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FullName)
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Rahul Sharma" })
+                        @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "field-error" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Mobile)
+                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "+91 98765 43210" })
+                        @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "field-error" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "you@email.com" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "field-error" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        <div class="password-wrap">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Min. 8 characters", id = "regPass" })
+                            <button type="button" class="toggle-pass" onclick="togglePass('regPass')"><i class="fa fa-eye"></i></button>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "field-error" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                        <div class="password-wrap">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Re-enter password", id = "regPass2" })
+                            <button type="button" class="toggle-pass" onclick="togglePass('regPass2')"><i class="fa fa-eye"></i></button>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "field-error" })
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            @Html.CheckBoxFor(m => m.AcceptTerms)
+                            I agree to the <a href="/Home/Terms" target="_blank">Terms & Conditions</a>
+                        </label>
+                        @Html.ValidationMessageFor(m => m.AcceptTerms, "", new { @class = "field-error" })
+                    </div>
+                    <button type="submit" class="btn-auth">Create Free Account</button>
+                }
+                <p class="auth-switch">Already have an account? <a href="/Account/Login">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - BidKaro | Vehicle Auctions</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+    <div class="container">
+        <div class="topbar-left">
+            <i class="fa fa-phone"></i> +91 98765 43210 &nbsp;|&nbsp;
+            <i class="fa fa-envelope"></i> support@bidkaro.net
+        </div>
+        <div class="topbar-right">
+            <a href="/Account/Login"><i class="fa fa-sign-in-alt"></i> Login</a>
+            <a href="/Account/Register" class="btn-register">Register Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="container nav-inner">
+        <a href="/" class="brand">
+            <span class="brand-bid">BID</span><span class="brand-karo">KARO</span>
+            <span class="brand-tag">Vehicle Auctions</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Auction/Live">Live Auctions</a></li>
+            <li class="dropdown">
+                <a href="#">Vehicles <i class="fa fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="/Auction/Category/two-wheeler"><i class="fa fa-motorcycle"></i> 2 Wheelers</a>
+                    <a href="/Auction/Category/three-wheeler"><i class="fa fa-truck-pickup"></i> 3 Wheelers</a>
+                    <a href="/Auction/Category/four-wheeler"><i class="fa fa-car"></i> 4 Wheelers</a>
+                    <a href="/Auction/Category/commercial"><i class="fa fa-truck"></i> Commercial</a>
+                    <a href="/Auction/Category/construction"><i class="fa fa-hard-hat"></i> Construction</a>
+                    <a href="/Auction/Category/farm"><i class="fa fa-tractor"></i> Farm Equipment</a>
+                </div>
+            </li>
+            <li><a href="/Home/HowItWorks">How It Works</a></li>
+            <li><a href="/Home/About">About Us</a></li>
+        </ul>
+        <a href="/Auction/Live" class="btn-bid-now"><i class="fa fa-gavel"></i> Bid Now</a>
+        <button class="hamburger" id="hamburger"><i class="fa fa-bars"></i></button>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main>
+    @RenderBody()
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <div class="footer-logo"><span class="brand-bid">BID</span><span class="brand-karo">KARO</span></div>
+            <p>India's leading online platform for buying & selling pre-owned vehicles through transparent, real-time auctions.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Auction/Live">Live Auctions</a></li>
+                <li><a href="/Home/HowItWorks">How It Works</a></li>
+                <li><a href="/Home/About">About Us</a></li>
+                <li><a href="/Home/Contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Vehicle Types</h4>
+            <ul>
+                <li><a href="#">2 Wheelers</a></li>
+                <li><a href="#">3 Wheelers</a></li>
+                <li><a href="#">4 Wheelers</a></li>
+                <li><a href="#">Commercial Vehicles</a></li>
+                <li><a href="#">Construction Equipment</a></li>
+                <li><a href="#">Farm Equipment</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Download App</h4>
+            <p>Bid anytime, anywhere!</p>
+            <a href="#" class="app-badge"><i class="fab fa-google-play"></i> Google Play</a>
+            <a href="#" class="app-badge"><i class="fab fa-apple"></i> App Store</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year BidKaro – MJS Bidkaro Services Pvt. Ltd. All Rights Reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a> &nbsp;|&nbsp;
+                <a href="#">Terms of Use</a> &nbsp;|&nbsp;
+                <a href="#">Refund Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="~/js/site.js"></script>
+</body>
+</html>

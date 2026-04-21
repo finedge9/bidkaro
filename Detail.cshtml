@@ -1,0 +1,166 @@
+@{
+    ViewBag.Title = "2020 Maruti Swift VXI - Auction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="auction-detail section-pad">
+    <div class="container">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="/">Home</a> <i class="fa fa-chevron-right"></i>
+            <a href="/Auction/Live">Live Auctions</a> <i class="fa fa-chevron-right"></i>
+            <span>2020 Maruti Swift VXI</span>
+        </div>
+
+        <div class="detail-layout">
+
+            <!-- LEFT: Images & Info -->
+            <div class="detail-left">
+                <div class="detail-gallery">
+                    <div class="main-image placeholder-img large"><i class="fa fa-car fa-5x"></i></div>
+                    <div class="thumb-strip">
+                        @for(int t = 0; t < 5; t++) {
+                            <div class="thumb placeholder-img small"><i class="fa fa-car"></i></div>
+                        }
+                    </div>
+                </div>
+
+                <div class="detail-tabs">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="specs">Specifications</button>
+                    <button class="tab-btn" data-tab="inspection">Inspection</button>
+                    <button class="tab-btn" data-tab="history">Bid History</button>
+                </div>
+
+                <div class="tab-content" id="overview">
+                    <div class="spec-grid">
+                        <div class="spec-item"><span class="spec-label">Make</span><span class="spec-val">Maruti Suzuki</span></div>
+                        <div class="spec-item"><span class="spec-label">Model</span><span class="spec-val">Swift VXI</span></div>
+                        <div class="spec-item"><span class="spec-label">Year</span><span class="spec-val">2020</span></div>
+                        <div class="spec-item"><span class="spec-label">Fuel</span><span class="spec-val">Petrol</span></div>
+                        <div class="spec-item"><span class="spec-label">KMs Driven</span><span class="spec-val">38,500 km</span></div>
+                        <div class="spec-item"><span class="spec-label">Transmission</span><span class="spec-val">Manual</span></div>
+                        <div class="spec-item"><span class="spec-label">Color</span><span class="spec-val">Pearl Arctic White</span></div>
+                        <div class="spec-item"><span class="spec-label">Location</span><span class="spec-val">Mumbai, MH</span></div>
+                        <div class="spec-item"><span class="spec-label">Source</span><span class="spec-val">NBFC Repossession</span></div>
+                        <div class="spec-item"><span class="spec-label">Lot No.</span><span class="spec-val">BK-2024-00782</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Bid Panel -->
+            <div class="detail-right">
+                <div class="bid-panel">
+                    <div class="bid-panel-header">
+                        <span class="badge-live-lg"><i class="fa fa-circle pulse-dot"></i> LIVE AUCTION</span>
+                        <span class="lot-id">Lot #BK-2024-00782</span>
+                    </div>
+
+                    <h2 class="vehicle-title">2020 Maruti Swift VXI</h2>
+                    <div class="vehicle-subtitle"><i class="fa fa-map-marker-alt"></i> Mumbai &nbsp;|&nbsp; <i class="fa fa-tachometer-alt"></i> 38,500 km &nbsp;|&nbsp; Petrol</div>
+
+                    <div class="bid-countdown">
+                        <div class="countdown-label">Auction Ends In:</div>
+                        <div class="countdown-boxes">
+                            <div class="cd-box"><span id="cdHours">00</span><small>Hours</small></div>
+                            <div class="cd-sep">:</div>
+                            <div class="cd-box"><span id="cdMins">45</span><small>Mins</small></div>
+                            <div class="cd-sep">:</div>
+                            <div class="cd-box"><span id="cdSecs">12</span><small>Secs</small></div>
+                        </div>
+                    </div>
+
+                    <div class="bid-price-info">
+                        <div class="bid-info-row">
+                            <span>Base Price</span>
+                            <span class="price-muted">₹3,00,000</span>
+                        </div>
+                        <div class="bid-info-row">
+                            <span>Total Bids</span>
+                            <span><strong>34</strong></span>
+                        </div>
+                        <div class="bid-info-row current-bid-row">
+                            <span>Current Highest Bid</span>
+                            <span class="current-bid-val">₹4,85,000</span>
+                        </div>
+                        <div class="bid-info-row">
+                            <span>Min. Increment</span>
+                            <span>₹5,000</span>
+                        </div>
+                    </div>
+
+                    <div class="bid-form">
+                        <label>Your Bid Amount</label>
+                        <div class="bid-input-row">
+                            <span class="rupee-prefix">₹</span>
+                            <input type="number" id="bidAmount" class="bid-input" placeholder="4,90,000" min="490000" step="5000" value="490000" />
+                        </div>
+                        <div class="bid-quick-btns">
+                            <button onclick="addBid(5000)">+₹5K</button>
+                            <button onclick="addBid(10000)">+₹10K</button>
+                            <button onclick="addBid(25000)">+₹25K</button>
+                            <button onclick="addBid(50000)">+₹50K</button>
+                        </div>
+                        <button class="btn-place-bid">
+                            <i class="fa fa-gavel"></i> Place Bid
+                        </button>
+                        <p class="bid-disclaimer">By placing a bid you agree to our <a href="#">Terms & Conditions</a>.</p>
+                    </div>
+
+                    <div class="bid-actions-alt">
+                        <button class="btn-watchlist-full"><i class="fa fa-heart"></i> Add to Watchlist</button>
+                        <button class="btn-share"><i class="fa fa-share-alt"></i> Share</button>
+                    </div>
+
+                    <div class="seller-info">
+                        <div class="seller-badge"><i class="fa fa-university"></i> NBFC</div>
+                        <div>
+                            <div class="seller-label">Verified Seller</div>
+                            <div class="seller-sub">Inventory from regulated financial institutions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bid History Widget -->
+                <div class="bid-history-panel">
+                    <h4><i class="fa fa-history"></i> Recent Bids</h4>
+                    <ul class="bid-history-list">
+                        <li class="top-bid"><span>Bidder #***45</span><span>₹4,85,000</span><span class="time-ago">Just now</span></li>
+                        <li><span>Bidder #***12</span><span>₹4,80,000</span><span class="time-ago">2 min ago</span></li>
+                        <li><span>Bidder #***88</span><span>₹4,75,000</span><span class="time-ago">5 min ago</span></li>
+                        <li><span>Bidder #***34</span><span>₹4,70,000</span><span class="time-ago">7 min ago</span></li>
+                        <li><span>Bidder #***67</span><span>₹4,65,000</span><span class="time-ago">10 min ago</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function addBid(amount) {
+    const inp = document.getElementById('bidAmount');
+    inp.value = parseInt(inp.value || 490000) + amount;
+}
+
+// Countdown
+let secs = 45 * 60 + 12;
+setInterval(() => {
+    secs = Math.max(0, secs - 1);
+    const h = Math.floor(secs / 3600);
+    const m = Math.floor((secs % 3600) / 60);
+    const s = secs % 60;
+    document.getElementById('cdHours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cdMins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cdSecs').textContent = String(s).padStart(2,'0');
+}, 1000);
+
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    });
+});
+</script>
